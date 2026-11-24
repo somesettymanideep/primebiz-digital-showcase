@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as IndustriesRouteImport } from './routes/industries'
+import { Route as SolutionsRouteImport } from './routes/solutions'
+import { Route as TechnologyInnovationRouteImport } from './routes/technology-innovation'
+import { Route as WhyPrimebizproRouteImport } from './routes/why-primebizpro'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesRoute = IndustriesRouteImport.update({
+  id: '/industries',
+  path: '/industries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsRoute = SolutionsRouteImport.update({
+  id: '/solutions',
+  path: '/solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TechnologyInnovationRoute = TechnologyInnovationRouteImport.update({
+  id: '/technology-innovation',
+  path: '/technology-innovation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhyPrimebizproRoute = WhyPrimebizproRouteImport.update({
+  id: '/why-primebizpro',
+  path: '/why-primebizpro',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/industries': typeof IndustriesRoute
+  '/solutions': typeof SolutionsRoute
+  '/technology-innovation': typeof TechnologyInnovationRoute
+  '/why-primebizpro': typeof WhyPrimebizproRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/industries': typeof IndustriesRoute
+  '/solutions': typeof SolutionsRoute
+  '/technology-innovation': typeof TechnologyInnovationRoute
+  '/why-primebizpro': typeof WhyPrimebizproRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/industries': typeof IndustriesRoute
+  '/solutions': typeof SolutionsRoute
+  '/technology-innovation': typeof TechnologyInnovationRoute
+  '/why-primebizpro': typeof WhyPrimebizproRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/industries'
+    | '/solutions'
+    | '/technology-innovation'
+    | '/why-primebizpro'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/industries'
+    | '/solutions'
+    | '/technology-innovation'
+    | '/why-primebizpro'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/industries'
+    | '/solutions'
+    | '/technology-innovation'
+    | '/why-primebizpro'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  IndustriesRoute: typeof IndustriesRoute
+  SolutionsRoute: typeof SolutionsRoute
+  TechnologyInnovationRoute: typeof TechnologyInnovationRoute
+  WhyPrimebizproRoute: typeof WhyPrimebizproRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries': {
+      id: '/industries'
+      path: '/industries'
+      fullPath: '/industries'
+      preLoaderRoute: typeof IndustriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions': {
+      id: '/solutions'
+      path: '/solutions'
+      fullPath: '/solutions'
+      preLoaderRoute: typeof SolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/technology-innovation': {
+      id: '/technology-innovation'
+      path: '/technology-innovation'
+      fullPath: '/technology-innovation'
+      preLoaderRoute: typeof TechnologyInnovationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/why-primebizpro': {
+      id: '/why-primebizpro'
+      path: '/why-primebizpro'
+      fullPath: '/why-primebizpro'
+      preLoaderRoute: typeof WhyPrimebizproRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  IndustriesRoute: IndustriesRoute,
+  SolutionsRoute: SolutionsRoute,
+  TechnologyInnovationRoute: TechnologyInnovationRoute,
+  WhyPrimebizproRoute: WhyPrimebizproRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

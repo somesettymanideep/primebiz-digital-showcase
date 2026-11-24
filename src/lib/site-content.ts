@@ -147,5 +147,6 @@ export function buildPageHead({ title, description, path }: PageMetadata) {
       { name: "twitter:title", content: fullTitle },
       { name: "twitter:description", content: description },
     ],
+    links: [{ rel: "canonical", href: path }],
   };
 }
