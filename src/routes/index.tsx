@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowRight, Database, Network, Users, Workflow } from "lucide-react";
+import { ArrowRight, Database, Network, Users, Workflow } from "lucide-react";
 
+import launchVideo from "@/assets/primebizpro_launch_30s_1920x1080.mp4.asset.json";
 import { Button } from "@/components/ui/button";
 import {
   CallToAction,
@@ -25,25 +26,20 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   return (
     <>
-      <section className="home-hero">
-        <img className="home-hero-image" src={siteImages.home} alt="" loading="eager" fetchPriority="high" />
-        <div className="home-hero-shade" aria-hidden="true" />
-        <div className="site-container home-hero-content">
-          <p className="eyebrow">CONNECTED BUSINESS TECHNOLOGY</p>
-          <h1>Every Operation.<br /><span className="accent-text">One Intelligent Platform.</span></h1>
-          <p className="hero-lede">Connecting Businesses Through Intelligent Technology.</p>
-          <p className="hero-description">PRIMEBIZPRO is envisioned as an integrated business technology ecosystem designed to simplify operations, connect processes, and support sustainable business growth.</p>
-          <div className="hero-actions">
-            <Button asChild size="lg" className="button-primary">
-              <Link to="/solutions">Explore Solutions <ArrowRight aria-hidden="true" /></Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="button-outline">
-              <Link to="/contact">Request a Demo</Link>
-            </Button>
-          </div>
-          <a className="hero-scroll-cue" href="#introduction"><ArrowDown aria-hidden="true" /><span>Scroll to explore</span></a>
-        </div>
-        <span className="hero-index" aria-hidden="true">PRIMEBIZPRO / BUSINESS TECHNOLOGY</span>
+      <section className="home-video-hero" aria-label="PRIMEBIZPRO launch video">
+        <h1 className="sr-only">PRIMEBIZPRO — Connected Business. Intelligent Operations. Sustainable Growth.</h1>
+        <video
+          className="home-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster={siteImages.home}
+          aria-label="PRIMEBIZPRO launch video, playing without sound"
+        >
+          <source src={launchVideo.url} type="video/mp4" />
+        </video>
       </section>
 
       <section id="introduction" className="section-band introduction-band">
