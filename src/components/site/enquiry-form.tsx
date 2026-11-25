@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { CheckCircle2, LoaderCircle } from "lucide-react";
 
@@ -36,6 +36,16 @@ export function EnquiryForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [submitError, setSubmitError] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const sol = params.get("solution") || params.get("interestedSolution");
+      if (sol && (solutionOptions as readonly string[]).includes(sol)) {
+        setValues((cur) => ({ ...cur, interestedSolution: sol }));
+      }
+    }
+  }, []);
 
   function updateField<K extends FieldName>(name: K, value: string) {
     setValues((current) => ({ ...current, [name]: value }));

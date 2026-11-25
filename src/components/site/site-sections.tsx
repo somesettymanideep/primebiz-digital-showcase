@@ -1,16 +1,20 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { ArrowRight, ArrowUpRight, ChevronRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ChevronRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { WhatsAppIcon } from "@/components/site/site-shell";
 import {
   industries,
+  siteContact,
   siteImages,
   solutionConcepts,
   technologyPillars,
   whyDifferentiators,
   whyPrinciples,
   type PageMetadata,
+  type SolutionConcept,
 } from "@/lib/site-content";
 
 export function Reveal({ children, className = "" }: { children: ReactNode; className?: string }) {
@@ -98,26 +102,114 @@ export function PageHero({
 }
 
 export function SolutionGrid({ compact = false }: { compact?: boolean }) {
+  const [selectedSolution, setSelectedSolution] = useState<SolutionConcept | null>(null);
+
   return (
-    <div className={`solution-grid${compact ? " is-compact" : ""}`}>
-      {solutionConcepts.map((solution, index) => {
-        const Icon = solution.icon;
-        return (
-          <Reveal key={solution.id} className="solution-reveal">
-            <Link to="/solutions" hash={solution.id} id={compact ? undefined : solution.id} className="solution-card">
-              <div className="solution-card-top">
-                <span className="solution-card-icon"><Icon aria-hidden="true" strokeWidth={1.7} /></span>
-                <span className="card-number">0{index + 1}</span>
+    <>
+      <div className={`solution-grid${compact ? " is-compact" : ""}`}>
+        {solutionConcepts.map((solution, index) => {
+          const Icon = solution.icon;
+          return (
+            <Reveal key={solution.id} className="solution-reveal">
+              <div
+                id={compact ? undefined : solution.id}
+                className="solution-card"
+                onClick={() => setSelectedSolution(solution)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setSelectedSolution(solution);
+                  }
+                }}
+                aria-haspopup="dialog"
+                aria-label={`Explore ${solution.name}`}
+              >
+                <div className="solution-card-top">
+                  <span className="solution-card-icon"><Icon aria-hidden="true" strokeWidth={1.7} /></span>
+                  <span className="card-number">0{index + 1}</span>
+                </div>
+                <h3>{solution.name}</h3>
+                <p className="solution-summary">{solution.summary}</p>
+                <p className="solution-detail">{solution.description}</p>
+                <button
+                  type="button"
+                  className="text-link solution-explore-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedSolution(solution);
+                  }}
+                  aria-label={`Explore ${solution.name} details`}
+                >
+                  Explore solution <ArrowRight aria-hidden="true" />
+                </button>
               </div>
-              <h3>{solution.name}</h3>
-              <p className="solution-summary">{solution.summary}</p>
-              <p className="solution-detail">{solution.description}</p>
-              <span className="text-link">Explore solution <ArrowRight aria-hidden="true" /></span>
-            </Link>
-          </Reveal>
-        );
-      })}
-    </div>
+            </Reveal>
+          );
+        })}
+      </div>
+
+      <Dialog open={Boolean(selectedSolution)} onOpenChange={(open) => !open && setSelectedSolution(null)}>
+        <DialogContent className="solution-modal-content">
+          {selectedSolution ? (
+            <div className="solution-modal-body">
+              <div className="solution-modal-header">
+                <div className="solution-modal-brand">
+                  <span className="solution-card-icon modal-icon">
+                    <selectedSolution.icon aria-hidden="true" strokeWidth={1.8} />
+                  </span>
+                  <div>
+                    <DialogTitle className="solution-modal-title">{selectedSolution.name}</DialogTitle>
+                    <p className="solution-modal-subtitle">{selectedSolution.summary.replace(/\.$/, "")}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="solution-modal-section">
+                <h4 className="solution-modal-section-title">Description</h4>
+                <p className="solution-modal-description">{selectedSolution.fullDescription}</p>
+              </div>
+
+              <div className="solution-modal-section">
+                <h4 className="solution-modal-section-title">Key Functional Areas</h4>
+                <ul className="solution-modal-features">
+                  {selectedSolution.keyFunctionalAreas.map((area) => (
+                    <li key={area}>
+                      <span className="feature-check"><Check aria-hidden="true" /></span>
+                      <span>{area}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="solution-modal-footer">
+                <Button asChild size="lg" className="button-primary solution-discuss-btn">
+                  <a
+                    href={`/contact?solution=${encodeURIComponent(selectedSolution.name)}`}
+                    onClick={() => setSelectedSolution(null)}
+                  >
+                    <span>{selectedSolution.buttonText}</span>
+                    <ArrowRight aria-hidden="true" />
+                  </a>
+                </Button>
+
+                <Button asChild variant="outline" size="lg" className="solution-whatsapp-btn">
+                  <a
+                    href={`${siteContact.whatsappUrl}?text=${encodeURIComponent(`Hello PRIMEBIZPRO, I would like to discuss ${selectedSolution.name}.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <WhatsAppIcon aria-hidden="true" />
+                    <span>WhatsApp Us</span>
+                  </a>
+                </Button>
+              </div>
+            </div>
+          ) : null}
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
 
