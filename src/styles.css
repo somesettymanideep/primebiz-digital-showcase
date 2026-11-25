@@ -538,9 +538,9 @@
 
 .page-hero {
   display: flex;
-  min-height: 590px;
+  min-height: 350px;
   align-items: flex-end;
-  padding: 166px 0 82px;
+  padding: 92px 0 36px;
 }
 
 .page-hero-image {
@@ -558,6 +558,7 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 40px;
+  width: 100%;
 }
 
 .page-hero-copy {
@@ -565,20 +566,21 @@
 }
 
 .page-hero h1 {
-  margin-top: 20px;
-  font-size: 58px;
-  line-height: 1.1;
+  margin-top: 10px;
+  font-size: 38px;
+  line-height: 1.15;
 }
 
 .page-hero-description {
   max-width: 680px;
-  margin-top: 20px;
+  margin-top: 10px;
   color: var(--muted-text);
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 .hero-tagline {
-  margin-top: 22px;
+  margin-top: 12px;
   color: var(--brand-white);
   font-family: var(--font-heading);
   font-size: 13px;
@@ -1803,15 +1805,15 @@
 }
 
 .site-footer {
-  padding: 76px 0 24px;
+  padding: 68px 0 24px;
   background: var(--deep-background);
 }
 
 .footer-main {
   display: grid;
   grid-template-columns: 1.28fr 0.8fr 0.9fr 1fr;
-  gap: 54px;
-  padding-bottom: 54px;
+  gap: 48px;
+  padding-bottom: 48px;
 }
 
 .brand-lockup.is-footer {
@@ -1820,26 +1822,28 @@
 }
 
 .footer-tagline {
-  max-width: 300px;
+  max-width: 320px;
   margin-top: 20px;
   color: var(--brand-white);
   font-family: var(--font-heading);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
+  line-height: 1.5;
 }
 
 .footer-description {
-  max-width: 320px;
+  max-width: 340px;
   margin-top: 12px;
   color: var(--muted-text);
-  font-size: 12px;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .footer-contact-button {
   margin-top: 22px;
   border-color: var(--brand-border);
   color: var(--brand-white);
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .footer-contact-button svg {
@@ -1851,23 +1855,30 @@
   margin-bottom: 20px;
   color: var(--brand-white);
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .footer-link-column ul {
   display: grid;
-  gap: 11px;
+  gap: 12px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+.footer-link-column li {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 .footer-link-column a,
 .footer-contact-column > p {
   color: var(--muted-text);
-  font-size: 11px;
+  font-size: 14px;
+  line-height: 1.5;
   transition: color 160ms ease;
 }
 
@@ -1877,25 +1888,26 @@
 
 .footer-contact-link {
   margin-top: 10px;
+  font-size: 14px;
 }
 
 .contact-placeholders {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4px;
+  gap: 6px;
   margin-top: 18px;
 }
 
 .contact-placeholders span {
   margin-top: 8px;
   color: var(--muted-text);
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .contact-placeholders strong,
 .contact-placeholders .contact-footer-link {
   color: var(--brand-white);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 500;
   text-decoration: none;
   transition: color 150ms ease;
@@ -1914,7 +1926,12 @@
   padding-top: 22px;
   border-top: 1px solid var(--brand-border);
   color: var(--muted-text);
-  font-size: 10px;
+  font-size: 13px;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .social-placeholder span {
@@ -2039,9 +2056,9 @@
   .header-inner { min-height: 70px; gap: 10px; }
   .site-header { margin-bottom: -70px; }
   .brand-lockup { width: 150px; height: 50px; }
-  .page-hero { min-height: 520px; padding: 144px 0 64px; }
+  .page-hero { min-height: 310px; padding: 84px 0 32px; }
   .page-hero-inner { display: block; }
-  .page-hero h1 { font-size: 42px; }
+  .page-hero h1 { font-size: 30px; line-height: 1.2; margin-top: 8px; }
   .hero-index { display: none; }
   .page-hero-shade { background: linear-gradient(90deg, color-mix(in oklab, var(--deep-background) 94%, transparent), color-mix(in oklab, var(--deep-background) 55%, transparent)), linear-gradient(0deg, var(--deep-background), transparent 64%); }
   .section-band { padding-block: 72px; }
@@ -2106,9 +2123,9 @@
   .header-demo-button { min-height: 38px; padding-inline: 10px; font-size: 10px; }
   .header-demo-button svg { display: none; }
   .mobile-menu-trigger { width: 40px; height: 40px; }
-  .page-hero { min-height: 500px; padding: 130px 0 54px; }
-  .page-hero h1 { font-size: 36px; }
-  .page-hero-description { margin-top: 16px; font-size: 14px; }
+  .page-hero { min-height: 270px; padding: 76px 0 24px; }
+  .page-hero h1 { font-size: 26px; line-height: 1.2; margin-top: 6px; }
+  .page-hero-description { margin-top: 8px; font-size: 13px; line-height: 1.4; }
   .section-band { padding-block: 60px; }
   .section-heading h2,
   .introduction-copy h2,
