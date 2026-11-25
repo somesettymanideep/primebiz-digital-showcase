@@ -39,6 +39,16 @@ import whyImage from "@/assets/why-operations.webp";
 
 export const siteTagline = "Connected Business. Intelligent Operations. Sustainable Growth.";
 
+export const siteContact = {
+  email: "Info@primebizpro.in",
+  phone: "+91 9989120202",
+  phoneRaw: "9989120202",
+  whatsappUrl: "https://wa.me/919989120202",
+  website: "primebizpro.in",
+  websiteUrl: "https://primebizpro.in",
+  location: "India",
+};
+
 export const siteImages = {
   about: aboutImage,
   contact: contactImage,

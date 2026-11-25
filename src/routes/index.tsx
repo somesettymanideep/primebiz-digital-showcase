@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Database, Network, Users, Workflow } from "lucide-react";
 
@@ -12,7 +13,7 @@ import {
   TechnologyGrid,
   WhyGrid,
 } from "@/components/site/site-sections";
-import { buildPageHead, siteImages } from "@/lib/site-content";
+import { buildPageHead } from "@/lib/site-content";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -24,18 +25,29 @@ export const Route = createFileRoute("/")({
 });
 
 function HomePage() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      // Autoplay immediately without waiting or flashing an image poster
+      videoRef.current.play().catch(() => {
+        // Fallback gracefully if browser policy prevents unmuted interaction
+      });
+    }
+  }, []);
+
   return (
     <>
       <section className="home-video-hero" aria-label="PRIMEBIZPRO launch video">
         <h1 className="sr-only">PRIMEBIZPRO — Connected Business. Intelligent Operations. Sustainable Growth.</h1>
         <video
+          ref={videoRef}
           className="home-video"
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
-          poster={siteImages.home}
           aria-label="PRIMEBIZPRO launch video, playing without sound"
         >
           <source src={launchVideo.url} type="video/mp4" />

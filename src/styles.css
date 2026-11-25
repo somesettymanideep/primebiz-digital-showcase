@@ -502,7 +502,7 @@
   width: 100%;
   overflow: hidden;
   aspect-ratio: 16 / 9;
-  background: var(--deep-background);
+  background: #03070E;
 }
 
 .home-video {
@@ -1503,10 +1503,43 @@
   font-size: 10px;
 }
 
-.contact-placeholder-row strong {
+.contact-placeholder-row strong,
+.contact-placeholder-row a strong {
   color: var(--brand-white);
   font-size: 12px;
   font-weight: 500;
+  transition: color 150ms ease;
+}
+
+.contact-placeholder-row a:hover strong {
+  color: var(--technology-blue);
+  text-decoration: underline;
+}
+
+.contact-whatsapp-card {
+  margin-top: 24px;
+}
+
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-color: color-mix(in oklab, #25D366 45%, var(--brand-border));
+  background: color-mix(in oklab, var(--card-background) 90%, #25D366 10%);
+  color: var(--brand-white);
+  transition: all 180ms ease;
+}
+
+.whatsapp-btn svg:first-child {
+  color: #25D366;
+  width: 19px;
+  height: 19px;
+}
+
+.whatsapp-btn:hover {
+  border-color: #25D366;
+  background: color-mix(in oklab, var(--card-background) 78%, #25D366 22%);
+  box-shadow: 0 0 16px rgba(37, 211, 102, 0.2);
 }
 
 .contact-privacy-note {
@@ -1814,10 +1847,18 @@
   font-size: 10px;
 }
 
-.contact-placeholders strong {
+.contact-placeholders strong,
+.contact-placeholders .contact-footer-link {
   color: var(--brand-white);
   font-size: 11px;
   font-weight: 500;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.contact-placeholders .contact-footer-link:hover {
+  color: var(--technology-blue);
+  text-decoration: underline;
 }
 
 .footer-bottom {
@@ -1877,6 +1918,24 @@
 .floating-contact span {
   font-size: 11px;
   font-weight: 600;
+}
+
+.floating-whatsapp {
+  border-color: color-mix(in oklab, #25D366 50%, var(--brand-border));
+  background: color-mix(in oklab, var(--card-background) 90%, #25D366 10%);
+  gap: 8px;
+}
+
+.floating-whatsapp svg {
+  color: #25D366;
+  width: 18px;
+  height: 18px;
+}
+
+.floating-whatsapp:hover {
+  border-color: #25D366;
+  background: color-mix(in oklab, var(--card-background) 80%, #25D366 20%);
+  box-shadow: 0 0 16px rgba(37, 211, 102, 0.25);
 }
 
 .back-to-top {

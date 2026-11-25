@@ -3,7 +3,9 @@ import { ArrowRight, Globe2, Mail, MapPin, Phone } from "lucide-react";
 
 import { EnquiryForm } from "@/components/site/enquiry-form";
 import { CallToAction, PageHero, Reveal, SectionHeading } from "@/components/site/site-sections";
-import { buildPageHead, siteImages } from "@/lib/site-content";
+import { WhatsAppIcon } from "@/components/site/site-shell";
+import { Button } from "@/components/ui/button";
+import { buildPageHead, siteContact, siteImages } from "@/lib/site-content";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
@@ -14,11 +16,32 @@ export const Route = createFileRoute("/contact")({
   }),
 });
 
-const contactPlaceholders = [
-  { label: "Email Address", value: "To be confirmed", icon: Mail },
-  { label: "Phone Number", value: "To be confirmed", icon: Phone },
-  { label: "Business Location", value: "To be confirmed", icon: MapPin },
-  { label: "Website", value: "To be confirmed", icon: Globe2 },
+const contactChannels = [
+  {
+    label: "Email Address",
+    value: siteContact.email,
+    href: `mailto:${siteContact.email}`,
+    icon: Mail,
+  },
+  {
+    label: "WhatsApp / Phone",
+    value: siteContact.phone,
+    href: siteContact.whatsappUrl,
+    icon: Phone,
+    isExternal: true,
+  },
+  {
+    label: "Website",
+    value: siteContact.website,
+    href: siteContact.websiteUrl,
+    icon: Globe2,
+    isExternal: true,
+  },
+  {
+    label: "Business Location",
+    value: siteContact.location,
+    icon: MapPin,
+  },
 ];
 
 function ContactPage() {
@@ -41,17 +64,39 @@ function ContactPage() {
               <p className="contact-intro">We welcome business enquiries, technology partnerships, product discussions, and collaboration opportunities.</p>
             </Reveal>
             <div className="contact-placeholder-list">
-              {contactPlaceholders.map((item) => {
+              {contactChannels.map((item) => {
                 const Icon = item.icon;
                 return (
                   <Reveal key={item.label}>
                     <div className="contact-placeholder-row">
                       <span className="contact-placeholder-icon"><Icon aria-hidden="true" /></span>
-                      <span><small>{item.label}</small><strong>{item.value}</strong></span>
+                      <span>
+                        <small>{item.label}</small>
+                        {item.href ? (
+                          <a
+                            href={item.href}
+                            target={item.isExternal ? "_blank" : undefined}
+                            rel={item.isExternal ? "noopener noreferrer" : undefined}
+                          >
+                            <strong>{item.value}</strong>
+                          </a>
+                        ) : (
+                          <strong>{item.value}</strong>
+                        )}
+                      </span>
                     </div>
                   </Reveal>
                 );
               })}
+            </div>
+            <div className="contact-whatsapp-card">
+              <Button asChild size="lg" className="button-outline whatsapp-btn">
+                <a href={siteContact.whatsappUrl} target="_blank" rel="noopener noreferrer">
+                  <WhatsAppIcon aria-hidden="true" />
+                  <span>Chat on WhatsApp ({siteContact.phone})</span>
+                  <ArrowRight aria-hidden="true" />
+                </a>
+              </Button>
             </div>
             <p className="contact-privacy-note"><ArrowRight aria-hidden="true" /> Enquiry details are stored securely so the PRIMEBIZPRO team can review them.</p>
           </div>

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowRight, ArrowUp, ChevronDown, Menu, MessageCircle } from "lucide-react";
+import { ArrowRight, ArrowUp, ChevronDown, Menu } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -12,7 +12,22 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import primebizLogo from "@/assets/primebizpro-logo.png.asset.json";
-import { siteTagline, solutionConcepts } from "@/lib/site-content";
+import { siteContact, siteTagline, solutionConcepts } from "@/lib/site-content";
+
+export function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="currentColor"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.28-2.42 5.84a8.19 8.19 0 0 1-5.82 2.41h-.01c-1.49 0-2.96-.4-4.23-1.16l-.3-.18-3.12.82.83-3.04-.2-.32a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3" />
+    </svg>
+  );
+}
 
 const footerNavigation = [
   { label: "Home", to: "/" },
@@ -172,15 +187,20 @@ function SiteFooter() {
             <p>For business enquiries</p>
             <Link to="/contact" className="footer-contact-link">Use the enquiry form <ArrowRight aria-hidden="true" /></Link>
             <div className="contact-placeholders">
-              <span>Email address</span><strong>To be confirmed</strong>
-              <span>Phone number</span><strong>To be confirmed</strong>
-              <span>Business location</span><strong>To be confirmed</strong>
+              <span>Email address</span>
+              <a href={`mailto:${siteContact.email}`} className="contact-footer-link">{siteContact.email}</a>
+              <span>WhatsApp &amp; Phone</span>
+              <a href={siteContact.whatsappUrl} target="_blank" rel="noopener noreferrer" className="contact-footer-link">{siteContact.phone}</a>
+              <span>Business location</span>
+              <strong>{siteContact.location}</strong>
             </div>
           </div>
         </div>
         <div className="footer-bottom">
           <p>Copyright © 2026 PRIMEBIZPRO. All Rights Reserved.</p>
-          <p className="social-placeholder">Social channels <span>To be confirmed</span></p>
+          <p className="social-placeholder">
+            <span>Official enquiries: <a href={`mailto:${siteContact.email}`} className="contact-footer-link">{siteContact.email}</a></span>
+          </p>
         </div>
       </div>
     </footer>
@@ -232,10 +252,17 @@ function FloatingControls() {
     <>
       <div className="scroll-progress" ref={progressRef} aria-hidden="true" />
       {!industryGridVisible ? (
-        <Button asChild variant="outline" className="floating-contact">
-          <Link to="/contact" aria-label="Start an enquiry">
-            <MessageCircle aria-hidden="true" /><span>Start an enquiry</span>
-          </Link>
+        <Button asChild variant="outline" className="floating-contact floating-whatsapp">
+          <a
+            href={siteContact.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Chat with PRIMEBIZPRO on WhatsApp (${siteContact.phone})`}
+            title="Chat on WhatsApp"
+          >
+            <WhatsAppIcon aria-hidden="true" />
+            <span>WhatsApp Us</span>
+          </a>
         </Button>
       ) : null}
       {showTop && !industryGridVisible ? (
