@@ -1,19 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { ArrowRight, Home, MessageSquare } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { buildPageHead } from "@/lib/site-content";
 
-export const Route = createFileRoute("/404")({
-  component: NotFoundPage,
-  head: () => buildPageHead({
-    title: "404 Page Not Found",
-    description: "The requested page could not be found on PRIMEBIZPRO.",
-    path: "/404",
-  }),
-});
-
-export function NotFoundPage() {
+export function NotFoundContent() {
   return (
     <section className="section-band not-found-page" aria-labelledby="not-found-heading">
       <div className="site-container not-found-layout">

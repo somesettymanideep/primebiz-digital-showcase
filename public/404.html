@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 Page Not Found | PRIMEBIZPRO</title>
+  <meta name="description" content="The requested page could not be found on PRIMEBIZPRO." />
+  <meta name="author" content="PRIMEBIZPRO" />
+  <meta property="og:title" content="404 Page Not Found | PRIMEBIZPRO" />
+  <meta property="og:description" content="The requested page could not be found on PRIMEBIZPRO." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://primebizpro.in/404" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" />
+  <style>
+    :root {
+      --deep-background: #050B14;
+      --card-background: #07131F;
+      --brand-navy: #0F2033;
+      --brand-blue: #0284C7;
+      --brand-orange: #EA580C;
+      --brand-white: #FFFFFF;
+      --foreground: #F8FAFC;
+      --muted-text: #94A3B8;
+      --brand-border: rgba(148, 163, 184, 0.16);
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-heading: 'Sora', 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--deep-background);
+      color: var(--foreground);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-container {
+      width: 100%;
+      max-width: 1280px;
+      margin-inline: auto;
+      padding-inline: 24px;
+    }
+
+    /* Header */
+    .site-header {
+      width: 100%;
+      border-bottom: 1px solid var(--brand-border);
+      background: rgba(5, 11, 20, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 20px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand-logo img {
+      height: 48px;
+      width: auto;
+      display: block;
+    }
+
+    .desktop-navigation {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted-text);
+      transition: color 150ms ease;
+    }
+
+    .nav-link:hover {
+      color: var(--brand-white);
+    }
+
+    .header-demo-button {
+      background: var(--brand-blue);
+      color: var(--brand-white);
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: opacity 150ms ease;
+    }
+
+    .header-demo-button:hover {
+      opacity: 0.9;
+    }
+
+    /* 404 Main Content */
+    .not-found-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .not-found-box {
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brand-orange);
+      margin-bottom: 14px;
+    }
+
+    .not-found-code {
+      font-size: clamp(64px, 10vw, 108px);
+      font-family: var(--font-heading);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, var(--brand-white) 30%, var(--brand-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+
+    .not-found-heading {
+      font-size: clamp(24px, 4vw, 36px);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--brand-white);
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+
+    .accent-text {
+      color: var(--brand-blue);
+    }
+
+    .not-found-desc {
+      font-size: 15px;
+      color: var(--muted-text);
+      max-width: 480px;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: var(--brand-blue);
+      color: var(--brand-white);
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 150ms ease, opacity 150ms ease;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--brand-border);
+      background: rgba(7, 19, 31, 0.7);
+      color: var(--foreground);
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 150ms ease, border-color 150ms ease;
+    }
+
+    .btn-outline:hover {
+      background: var(--card-background);
+      border-color: var(--brand-blue);
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--brand-border);
+      background: #02070D;
+      padding-block: 40px 24px;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      font-size: 12px;
+      color: var(--muted-text);
+    }
+
+    .footer-contacts a {
+      color: var(--brand-white);
+      margin-left: 8px;
+      transition: color 150ms ease;
+    }
+
+    .footer-contacts a:hover {
+      color: var(--brand-blue);
+    }
+
+    /* Floating WhatsApp Button */
+    .floating-whatsapp {
+      position: fixed;
+      z-index: 45;
+      bottom: 24px;
+      right: 24px;
+      min-height: 48px;
+      padding-inline: 16px;
+      border-radius: 24px;
+      border: 1px solid rgba(37, 211, 102, 0.5);
+      background: rgba(7, 19, 31, 0.92);
+      color: var(--foreground);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      transition: all 180ms ease;
+    }
+
+    .floating-whatsapp svg {
+      width: 18px;
+      height: 18px;
+      color: #25D366;
+    }
+
+    .floating-whatsapp:hover {
+      border-color: #25D366;
+      box-shadow: 0 0 16px rgba(37, 211, 102, 0.25);
+    }
+
+    @media (max-width: 768px) {
+      .desktop-navigation { display: none; }
+      .header-demo-button { font-size: 12px; padding: 8px 14px; }
+      .floating-whatsapp span { display: none; }
+      .floating-whatsapp { width: 48px; height: 48px; padding: 0; justify-content: center; border-radius: 50%; right: 16px; bottom: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-container header-inner">
+      <a href="/" class="brand-logo" aria-label="PRIMEBIZPRO home">
+        <img src="/__l5e/assets-v1/f6a18bab-0566-40cc-8066-fdae50ca7601/primebizpro-logo.png" alt="PRIMEBIZPRO" />
+      </a>
+      <nav class="desktop-navigation" aria-label="Main navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/about" class="nav-link">About Us</a>
+        <a href="/solutions" class="nav-link">Solutions</a>
+        <a href="/industries" class="nav-link">Industries</a>
+        <a href="/technology-innovation" class="nav-link">Technology</a>
+        <a href="/why-primebizpro" class="nav-link">Why PRIMEBIZPRO</a>
+        <a href="/contact" class="nav-link">Contact</a>
+      </nav>
+      <a href="/contact" class="header-demo-button">Request a Demo ↗</a>
+    </div>
+  </header>
+
+  <main class="not-found-main">
+    <div class="not-found-box">
+      <p class="eyebrow">ERROR 404</p>
+      <div class="not-found-code">404</div>
+      <h1 class="not-found-heading">This connection leads <span class="accent-text">nowhere.</span></h1>
+      <p class="not-found-desc">
+        The page you are looking for does not exist, has been removed, or the link may have expired.
+      </p>
+      <div class="button-group">
+        <a href="/" class="btn-primary">Return to Homepage ↗</a>
+        <a href="/contact" class="btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-container footer-content">
+      <p>Copyright © 2026 PRIMEBIZPRO. All Rights Reserved.</p>
+      <div class="footer-contacts">
+        <span>Email: <a href="mailto:Info@primebizpro.in">Info@primebizpro.in</a></span>
+        <span style="margin-left: 14px;">WhatsApp: <a href="https://wa.me/919989120202" target="_blank" rel="noopener noreferrer">+91 9989120202</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919989120202" target="_blank" rel="noopener noreferrer" class="floating-whatsapp" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.28-2.42 5.84a8.19 8.19 0 0 1-5.82 2.41h-.01c-1.49 0-2.96-.4-4.23-1.16l-.3-.18-3.12.82.83-3.04-.2-.32a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3" />
+    </svg>
+    <span>WhatsApp Us</span>
+  </a>
+</body>
+</html>

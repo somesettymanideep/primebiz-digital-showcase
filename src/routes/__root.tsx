@@ -14,12 +14,12 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteLayout } from "@/components/site/site-shell";
 import { Button } from "@/components/ui/button";
-import { NotFoundPage } from "./404";
+import { NotFoundContent } from "@/components/site/not-found-content";
 
 function NotFoundComponent() {
   return (
     <SiteLayout>
-      <NotFoundPage />
+      <NotFoundContent />
     </SiteLayout>
   );
 }
