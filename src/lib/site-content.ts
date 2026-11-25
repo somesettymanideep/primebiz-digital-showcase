@@ -134,6 +134,7 @@ export type PageMetadata = { title: string; description: string; path: string };
 
 export function buildPageHead({ title, description, path }: PageMetadata) {
   const fullTitle = `${title} | PRIMEBIZPRO`;
+  const canonicalUrl = new URL(path, "https://primebiz-digital-showcase.lovable.app").href;
 
   return {
     meta: [
@@ -142,11 +143,11 @@ export function buildPageHead({ title, description, path }: PageMetadata) {
       { property: "og:title", content: fullTitle },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: path },
+      { property: "og:url", content: canonicalUrl },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: fullTitle },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: path }],
+    links: [{ rel: "canonical", href: canonicalUrl }],
   };
 }

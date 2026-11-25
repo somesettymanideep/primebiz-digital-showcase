@@ -94,7 +94,7 @@ function SiteHeader() {
                   {solutionConcepts.map((solution) => {
                     const Icon = solution.icon;
                     return (
-                      <Link key={solution.id} to="/solutions" hash={`#${solution.id}`} className="mega-menu-item" onClick={() => setSolutionsOpen(false)}>
+                      <Link key={solution.id} to="/solutions" hash={solution.id} className="mega-menu-item" onClick={() => setSolutionsOpen(false)}>
                         <Icon aria-hidden="true" />
                         <span><strong>{solution.name}</strong><small>{solution.summary}</small></span>
                       </Link>
@@ -131,7 +131,7 @@ function SiteHeader() {
                 <div className="mobile-solution-links">
                   <p className="eyebrow">SOLUTION CONCEPTS</p>
                   {solutionConcepts.map((solution) => (
-                    <Link key={solution.id} to="/solutions" hash={`#${solution.id}`} onClick={closeMobile}>{solution.name}</Link>
+                    <Link key={solution.id} to="/solutions" hash={solution.id} onClick={closeMobile}>{solution.name}</Link>
                   ))}
                 </div>
               </nav>
@@ -165,7 +165,7 @@ function SiteFooter() {
           </div>
           <div className="footer-link-column">
             <h2>Our Solutions</h2>
-            <ul>{solutionConcepts.map((solution) => <li key={solution.id}><Link to="/solutions" hash={`#${solution.id}`}>{solution.name}</Link></li>)}</ul>
+            <ul>{solutionConcepts.map((solution) => <li key={solution.id}><Link to="/solutions" hash={solution.id}>{solution.name}</Link></li>)}</ul>
           </div>
           <div className="footer-contact-column">
             <h2>Contact</h2>

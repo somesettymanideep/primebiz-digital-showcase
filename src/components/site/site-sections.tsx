@@ -103,7 +103,7 @@ export function SolutionGrid({ compact = false }: { compact?: boolean }) {
         const Icon = solution.icon;
         return (
           <Reveal key={solution.id} className="solution-reveal">
-            <Link to="/solutions" hash={`#${solution.id}`} id={compact ? undefined : solution.id} className="solution-card">
+            <Link to="/solutions" hash={solution.id} id={compact ? undefined : solution.id} className="solution-card">
               <div className="solution-card-top">
                 <span className="solution-card-icon"><Icon aria-hidden="true" strokeWidth={1.7} /></span>
                 <span className="card-number">0{index + 1}</span>
