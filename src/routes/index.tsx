@@ -13,7 +13,7 @@ import {
   TechnologyGrid,
   WhyGrid,
 } from "@/components/site/site-sections";
-import { buildPageHead } from "@/lib/site-content";
+import { buildPageHead, siteImages } from "@/lib/site-content";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -29,10 +29,9 @@ function HomePage() {
 
   useEffect(() => {
     if (videoRef.current) {
-      // Autoplay immediately without waiting or flashing an image poster
-      videoRef.current.play().catch(() => {
-        // Fallback gracefully if browser policy prevents unmuted interaction
-      });
+      // Ensure muted property is explicitly true for mobile browser autoplay policy
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(() => {});
     }
   }, []);
 
