@@ -57,8 +57,11 @@ jobs:
 
           echo "Publish directory is: $PUBLISH_DIR"
 
-          # Ensure SPA fallback (404.html) exists for direct route refresh
-          if [ -f "$PUBLISH_DIR/index.html" ] && [ ! -f "$PUBLISH_DIR/404.html" ]; then
+          # Ensure 404.html uses the dedicated 404 page if generated, or index.html fallback
+          if [ -f "$PUBLISH_DIR/404/index.html" ]; then
+            echo "Using prerendered 404/index.html for 404.html"
+            cp "$PUBLISH_DIR/404/index.html" "$PUBLISH_DIR/404.html"
+          elif [ -f "$PUBLISH_DIR/index.html" ] && [ ! -f "$PUBLISH_DIR/404.html" ]; then
             cp "$PUBLISH_DIR/index.html" "$PUBLISH_DIR/404.html"
           fi
 
