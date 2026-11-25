@@ -48,6 +48,7 @@ function BrandMark({ footer = false }: { footer?: boolean }) {
 }
 
 function SiteHeader() {
+  const isHome = useRouterState({ select: (state) => state.location.pathname === "/" || state.location.pathname === "" });
   const [scrolled, setScrolled] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -81,7 +82,7 @@ function SiteHeader() {
   const closeMobile = () => setMobileOpen(false);
 
   return (
-    <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
+    <header className={`site-header${scrolled ? " is-scrolled" : ""}${isHome ? " is-home" : ""}`}>
       <div className="site-container header-inner">
         <BrandMark />
         <nav className="desktop-navigation" aria-label="Main navigation">
