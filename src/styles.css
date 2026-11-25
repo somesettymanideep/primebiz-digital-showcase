@@ -891,6 +891,120 @@
   font-size: 12px;
 }
 
+.why-differentiator-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.why-differentiator {
+  min-height: 244px;
+  padding: 25px;
+  border-top: 1px solid var(--brand-border);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--card-background) 76%, transparent), transparent);
+}
+
+.why-differentiator-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.why-differentiator-icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid color-mix(in oklab, var(--technology-blue) 44%, var(--brand-border));
+  border-radius: 5px;
+  background: color-mix(in oklab, var(--technology-blue) 12%, var(--card-background));
+  color: var(--technology-blue);
+}
+
+.why-differentiator-icon svg {
+  width: 23px;
+  height: 23px;
+}
+
+.why-differentiator-number {
+  color: color-mix(in oklab, var(--muted-text) 62%, transparent);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.why-differentiator h3 {
+  margin-top: 20px;
+  font-size: 17px;
+}
+
+.why-differentiator p {
+  margin-top: 10px;
+  color: var(--muted-text);
+  font-size: 13px;
+}
+
+.why-philosophy-band {
+  position: relative;
+  overflow: hidden;
+  padding-block: 96px;
+  border-block: 1px solid var(--brand-border);
+  background: var(--secondary-background);
+}
+
+.why-philosophy-content > .eyebrow {
+  margin-bottom: 30px;
+}
+
+.why-philosophy-statement {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.why-philosophy-word {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--foreground);
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.08;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 650ms ease, transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.why-philosophy-count {
+  margin-bottom: 12px;
+  color: var(--technology-blue);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.why-philosophy-word:nth-child(2) { transition-delay: 90ms; }
+.why-philosophy-word:nth-child(3) { transition-delay: 180ms; }
+.why-philosophy-word:nth-child(4) { transition-delay: 270ms; }
+
+.why-philosophy-content.is-visible .why-philosophy-word {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.why-philosophy-rule {
+  height: 1px;
+  margin-top: 38px;
+  background: linear-gradient(90deg, var(--brand-orange), color-mix(in oklab, var(--technology-blue) 52%, var(--brand-border)), transparent 88%);
+}
+
+.why-philosophy-caption {
+  margin-top: 16px;
+  color: var(--muted-text);
+  font-size: 12px;
+}
+
 .section-end-link {
   display: flex;
   justify-content: flex-end;
@@ -1870,6 +1984,11 @@
   .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .why-card { min-height: 190px; padding: 18px; }
   .why-card > .card-number { top: 24px; right: 18px; }
+  .why-differentiator-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .why-differentiator { min-height: 230px; padding: 20px; }
+  .why-philosophy-band { padding-block: 72px; }
+  .why-philosophy-statement { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; }
+  .why-philosophy-word { font-size: 30px; }
   .industry-feature { grid-template-columns: 1fr; }
   .industry-feature-image { min-height: 350px; }
   .industry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1926,6 +2045,12 @@
   .home-why-band .why-grid,
   .why-grid { grid-template-columns: 1fr; }
   .why-card { min-height: 160px; }
+  .why-differentiator-grid { grid-template-columns: 1fr; gap: 10px; }
+  .why-differentiator { min-height: 0; padding: 22px; }
+  .why-philosophy-band { padding-block: 60px; }
+  .why-philosophy-content > .eyebrow { margin-bottom: 24px; }
+  .why-philosophy-statement { gap: 22px 12px; }
+  .why-philosophy-word { font-size: 24px; }
   .industry-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
   .industry-grid.is-compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .industry-card { min-height: 150px; padding: 14px; }

@@ -1,16 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Compass, Network, ShieldCheck } from "lucide-react";
-import { Link } from "@tanstack/react-router";
 
-import { Button } from "@/components/ui/button";
-import { CallToAction, PageHero, Reveal, SectionHeading, WhyGrid } from "@/components/site/site-sections";
+import { CallToAction, PageHero, Reveal, SectionHeading, WhyDifferentiatorGrid } from "@/components/site/site-sections";
 import { buildPageHead, siteImages } from "@/lib/site-content";
 
 export const Route = createFileRoute("/why-primebizpro")({
   component: WhyPage,
   head: () => buildPageHead({
     title: "Why PRIMEBIZPRO",
-    description: "Explore the principles behind PRIMEBIZPRO's planned business technology ecosystem and its focus on connected operations.",
+    description: "Discover PRIMEBIZPRO's business-driven vision for connected, industry-focused technology and intelligent operations.",
     path: "/why-primebizpro",
   }),
 });
@@ -20,8 +17,8 @@ function WhyPage() {
     <>
       <PageHero
         eyebrow="WHY PRIMEBIZPRO"
-        title={<>Technology that moves<br /><span className="accent-text">business forward.</span></>}
-        description="A considered platform vision for bringing business functions, industry context, and technology closer together."
+        title={<>A Smarter Approach<br /><span className="accent-text">to Business Technology.</span></>}
+        description="Bringing business understanding, intelligent technology and connected solutions together to support sustainable growth."
         image={siteImages.why}
         imageAlt="Two business professionals in conversation across a glass workspace"
       />
@@ -30,34 +27,36 @@ function WhyPage() {
         <div className="site-container">
           <Reveal>
             <SectionHeading
-              eyebrow="THE PRIMEBIZPRO VISION"
-              title={<>A connected ambition, <span className="accent-text">built around business.</span></>}
-              description="Six guiding principles shape the direction of the PRIMEBIZPRO platform concept."
+              eyebrow="SIX CORE DIFFERENTIATORS"
+              title={<>Designed around <span className="accent-text">business possibility.</span></>}
+              description="A business-first technology vision grounded in the needs of different industries and operations."
             />
           </Reveal>
-          <WhyGrid />
+          <WhyDifferentiatorGrid />
         </div>
       </section>
 
-      <section className="section-band why-perspective-band">
-        <div className="site-container why-perspective-layout">
-          <Reveal className="why-perspective-heading">
-            <p className="eyebrow">A PLATFORM-LED APPROACH</p>
-            <h2>Start with the whole picture.<br /><span className="accent-text">Keep the business in view.</span></h2>
+      <section className="why-philosophy-band" aria-labelledby="why-philosophy-heading">
+        <div className="site-container">
+          <Reveal className="why-philosophy-content">
+            <p className="eyebrow">OUR PHILOSOPHY</p>
+            <h2 id="why-philosophy-heading" className="why-philosophy-statement">
+              <span className="why-philosophy-word"><span className="why-philosophy-count" aria-hidden="true">01</span><span>SIMPLIFY<span className="accent-text">.</span></span></span>
+              <span className="why-philosophy-word"><span className="why-philosophy-count" aria-hidden="true">02</span><span>CONNECT<span className="accent-text">.</span></span></span>
+              <span className="why-philosophy-word"><span className="why-philosophy-count" aria-hidden="true">03</span><span>EMPOWER<span className="accent-text">.</span></span></span>
+              <span className="why-philosophy-word"><span className="why-philosophy-count" aria-hidden="true">04</span><span>EVOLVE<span className="accent-text">.</span></span></span>
+            </h2>
+            <div className="why-philosophy-rule" aria-hidden="true" />
+            <p className="why-philosophy-caption">A considered direction for business technology.</p>
           </Reveal>
-          <div className="why-perspective-points">
-            <Reveal><div><Network aria-hidden="true" /><h3>Connection</h3><p>Consider how teams, workflows, and information can work together.</p></div></Reveal>
-            <Reveal><div><Compass aria-hidden="true" /><h3>Context</h3><p>Keep business requirements and industry realities in the conversation.</p></div></Reveal>
-            <Reveal><div><ShieldCheck aria-hidden="true" /><h3>Clarity</h3><p>Describe the platform vision honestly, with planned concepts clearly identified.</p></div></Reveal>
-          </div>
-          <Button asChild variant="outline" className="button-outline"><Link to="/about">Learn about PRIMEBIZPRO <ArrowRight aria-hidden="true" /></Link></Button>
         </div>
       </section>
 
       <CallToAction
-        eyebrow="A CONVERSATION ABOUT YOUR BUSINESS"
-        title={<>Let’s move the conversation<br /><span className="accent-text">forward together.</span></>}
-        description="Tell us about your goals and the opportunities you see ahead."
+        eyebrow="YOUR NEXT STEP"
+        title={<>Ready to Explore<br /><span className="accent-text">Smarter Business Possibilities?</span></>}
+        description="Start a conversation about the possibilities ahead."
+        showContactButton={false}
       />
     </>
   );

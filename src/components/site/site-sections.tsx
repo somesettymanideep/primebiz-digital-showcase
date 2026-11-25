@@ -8,6 +8,7 @@ import {
   siteImages,
   solutionConcepts,
   technologyPillars,
+  whyDifferentiators,
   whyPrinciples,
   type PageMetadata,
 } from "@/lib/site-content";
@@ -161,6 +162,28 @@ export function WhyGrid() {
   );
 }
 
+export function WhyDifferentiatorGrid() {
+  return (
+    <div className="why-differentiator-grid">
+      {whyDifferentiators.map((principle, index) => {
+        const Icon = principle.icon;
+        return (
+          <Reveal key={principle.title} className="why-differentiator-reveal">
+            <article className="why-differentiator">
+              <div className="why-differentiator-top">
+                <span className="why-differentiator-icon"><Icon aria-hidden="true" strokeWidth={1.6} /></span>
+                <span className="why-differentiator-number">0{index + 1}</span>
+              </div>
+              <h3>{principle.title}</h3>
+              <p>{principle.description}</p>
+            </article>
+          </Reveal>
+        );
+      })}
+    </div>
+  );
+}
+
 export function TechnologyGrid() {
   return (
     <div className="technology-grid">
@@ -188,10 +211,12 @@ export function CallToAction({
   eyebrow,
   title,
   description,
+  showContactButton = true,
 }: {
   eyebrow: string;
   title: ReactNode;
   description: string;
+  showContactButton?: boolean;
 }) {
   return (
     <section className="cta-band">
@@ -205,9 +230,11 @@ export function CallToAction({
           <Button asChild size="lg" className="button-primary">
             <Link to="/contact">Request a Demo <ArrowRight aria-hidden="true" /></Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="button-outline">
-            <Link to="/contact">Contact Us</Link>
-          </Button>
+          {showContactButton ? (
+            <Button asChild variant="outline" size="lg" className="button-outline">
+              <Link to="/contact">Contact Us</Link>
+            </Button>
+          ) : null}
         </div>
       </div>
       <div className="cta-line" aria-hidden="true" />

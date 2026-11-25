@@ -130,6 +130,15 @@ export const whyPrinciples = [
   { title: "Scalable Technology Ecosystem", description: "A platform vision designed to grow alongside changing business needs.", icon: Layers },
 ];
 
+export const whyDifferentiators = [
+  { title: "Connected Ecosystem", description: "A unified technology vision designed to bring multiple business functions and solutions together.", icon: Network },
+  { title: "Industry-Focused Solutions", description: "Technology designed around the practical requirements of different industries.", icon: Building2 },
+  { title: "Business-Driven Innovation", description: "Solutions focused on real business challenges and operational requirements.", icon: Lightbulb },
+  { title: "Intelligent Operations", description: "Supporting better workflows, business visibility, and informed decision-making.", icon: Workflow },
+  { title: "Flexible & Scalable", description: "A technology ecosystem envisioned to grow and evolve with changing business needs.", icon: Layers },
+  { title: "Future-Ready Approach", description: "Embracing digital transformation, automation, analytics, and emerging technologies.", icon: Cpu },
+];
+
 export type PageMetadata = { title: string; description: string; path: string };
 
 export function buildPageHead({ title, description, path }: PageMetadata) {
