@@ -1,0 +1,87 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+        env:
+          VITE_SUPABASE_PROJECT_ID: "sarfoorinqldgonqhywo"
+          VITE_SUPABASE_PUBLISHABLE_KEY: "sb_publishable_c9OIj7MlVlcdq7F-buw8Jg_h5JoEkW2"
+          VITE_SUPABASE_URL: "https://c--ab9dbfd9-553f-46ef-8b3e-48d9f55761c7-prod.lovable.cloud"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare static files for GitHub Pages
+        run: |
+          # Determine the build output folder
+          if [ -d ".output/public" ]; then
+            PUBLISH_DIR=".output/public"
+          elif [ -d "dist/client" ]; then
+            PUBLISH_DIR="dist/client"
+          elif [ -d "dist" ]; then
+            PUBLISH_DIR="dist"
+          else
+            echo "Error: Build output directory not found"
+            exit 1
+          fi
+
+          echo "Publish directory is: $PUBLISH_DIR"
+
+          # Ensure SPA fallback (404.html) exists for direct route refresh
+          if [ -f "$PUBLISH_DIR/index.html" ] && [ ! -f "$PUBLISH_DIR/404.html" ]; then
+            cp "$PUBLISH_DIR/index.html" "$PUBLISH_DIR/404.html"
+          fi
+
+          # Ensure .nojekyll exists so GitHub Pages doesn't omit folders starting with _
+          touch "$PUBLISH_DIR/.nojekyll"
+
+          # Ensure CNAME exists in the published folder
+          echo "primebizpro.in" > "$PUBLISH_DIR/CNAME"
+
+          echo "PUBLISH_DIR=$PUBLISH_DIR" >> "$GITHUB_ENV"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ env.PUBLISH_DIR }}
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
