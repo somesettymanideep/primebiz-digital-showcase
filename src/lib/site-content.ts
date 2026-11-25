@@ -2,7 +2,7 @@ import {
   Activity,
   BarChart3,
   Blocks,
-  Briefcase,
+  Boxes,
   Building2,
   Cable,
   Cloud,
@@ -10,7 +10,6 @@ import {
   Database,
   Factory,
   FlaskConical,
-  GraduationCap,
   HardHat,
   HeartPulse,
   Layers,
@@ -20,7 +19,6 @@ import {
   Pill,
   Store,
   Stethoscope,
-  Truck,
   Workflow,
   type LucideIcon,
 } from "lucide-react";
@@ -29,6 +27,12 @@ import aboutImage from "@/assets/about-connected-business.webp";
 import contactImage from "@/assets/contact-conversation.webp";
 import homeImage from "@/assets/home-connected-ecosystem.webp";
 import industriesImage from "@/assets/industries-manufacturing.webp";
+import manufacturingIndustryImage from "@/assets/industries-manufacturing.webp.asset.json";
+import healthcareIndustryImage from "@/assets/industries-healthcare.webp.asset.json";
+import pharmaceuticalsIndustryImage from "@/assets/industries-pharmaceuticals.webp.asset.json";
+import constructionIndustryImage from "@/assets/industries-construction.webp.asset.json";
+import distributionIndustryImage from "@/assets/industries-distribution.webp.asset.json";
+import retailIndustryImage from "@/assets/industries-retail.webp.asset.json";
 import solutionsImage from "@/assets/solutions-architecture.webp";
 import technologyImage from "@/assets/technology-data-center.webp";
 import whyImage from "@/assets/why-operations.webp";
@@ -98,18 +102,57 @@ export const solutionConcepts: SolutionConcept[] = [
   },
 ];
 
-export type Industry = { name: string; description: string; icon: LucideIcon };
+export type Industry = {
+  name: string;
+  description: string;
+  icon: LucideIcon;
+  image: string;
+  imageAlt: string;
+};
 
 export const industries: Industry[] = [
-  { name: "Manufacturing", description: "A setting for connected planning, production, and business workflows.", icon: Factory },
-  { name: "Healthcare", description: "An environment where coordinated operations and information matter.", icon: HeartPulse },
-  { name: "Pharmaceuticals", description: "A sector with distinct processes across business operations.", icon: Pill },
-  { name: "Construction", description: "A project-led industry with many moving parts to bring together.", icon: HardHat },
-  { name: "Distribution", description: "A business context shaped by orders, inventory, and movement.", icon: Building2 },
-  { name: "Retail", description: "A connected view across customer-facing and business operations.", icon: Store },
-  { name: "Logistics", description: "A dynamic setting for linked information and operational workflows.", icon: Truck },
-  { name: "Education", description: "A service environment with people, processes, and information.", icon: GraduationCap },
-  { name: "Professional Services", description: "A people-led sector coordinating projects and business activity.", icon: Briefcase },
+  {
+    name: "Manufacturing & Industrial",
+    description: "A setting for connected planning, production, and business workflows.",
+    icon: Factory,
+    image: manufacturingIndustryImage.url,
+    imageAlt: "A yellow industrial robot working on a bright modern factory floor",
+  },
+  {
+    name: "Healthcare & Hospitals",
+    description: "An environment where coordinated operations and information matter.",
+    icon: HeartPulse,
+    image: healthcareIndustryImage.url,
+    imageAlt: "A healthcare professional walking through a modern hospital corridor",
+  },
+  {
+    name: "Pharmaceuticals & Life Sciences",
+    description: "A sector with distinct processes across business operations.",
+    icon: Pill,
+    image: pharmaceuticalsIndustryImage.url,
+    imageAlt: "A scientist inspecting stainless equipment in a pharmaceutical cleanroom",
+  },
+  {
+    name: "Construction & Infrastructure",
+    description: "A project-led industry with many moving parts to bring together.",
+    icon: HardHat,
+    image: constructionIndustryImage.url,
+    imageAlt: "Tower cranes above an active urban construction project",
+  },
+  {
+    name: "Wholesale & Distribution",
+    description: "A business context shaped by orders, inventory, and movement.",
+    icon: Boxes,
+    image: distributionIndustryImage.url,
+    imageAlt: "A forklift moving through a well-organized distribution warehouse",
+  },
+  {
+    name: "Retail & Commerce",
+    description: "A connected view across customer-facing and business operations.",
+    icon: Store,
+    image: retailIndustryImage.url,
+    imageAlt: "A shopper browsing a contemporary clothing boutique",
+  },
 ];
 
 export const technologyPillars = [

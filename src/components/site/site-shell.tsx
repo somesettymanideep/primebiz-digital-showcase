@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowRight, ArrowUp, ChevronDown, Menu, MessageCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -190,6 +190,22 @@ function SiteFooter() {
 function FloatingControls() {
   const progressRef = useRef<HTMLDivElement>(null);
   const [showTop, setShowTop] = useState(false);
+  const [industryGridVisible, setIndustryGridVisible] = useState(false);
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+
+  useEffect(() => {
+    const grid = document.querySelector(".industry-grid");
+    if (!grid || !("IntersectionObserver" in window)) {
+      setIndustryGridVisible(false);
+      return;
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setIndustryGridVisible(Boolean(entry?.isIntersecting));
+    });
+    observer.observe(grid);
+    return () => observer.disconnect();
+  }, [pathname]);
 
   useEffect(() => {
     const update = () => {
@@ -215,12 +231,14 @@ function FloatingControls() {
   return (
     <>
       <div className="scroll-progress" ref={progressRef} aria-hidden="true" />
-      <Button asChild variant="outline" className="floating-contact">
-        <Link to="/contact" aria-label="Start an enquiry">
-          <MessageCircle aria-hidden="true" /><span>Start an enquiry</span>
-        </Link>
-      </Button>
-      {showTop ? (
+      {!industryGridVisible ? (
+        <Button asChild variant="outline" className="floating-contact">
+          <Link to="/contact" aria-label="Start an enquiry">
+            <MessageCircle aria-hidden="true" /><span>Start an enquiry</span>
+          </Link>
+        </Button>
+      ) : null}
+      {showTop && !industryGridVisible ? (
         <Button type="button" variant="outline" className="back-to-top" aria-label="Back to top" title="Back to top" onClick={returnToTop}>
           <ArrowUp aria-hidden="true" />
         </Button>

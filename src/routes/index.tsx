@@ -103,16 +103,8 @@ function HomePage() {
               description="A broad business-technology vision with industry contexts in mind."
             />
           </Reveal>
-          <div className="industry-feature">
-            <Reveal className="industry-feature-image">
-              <img src={siteImages.industries} alt="A modern manufacturing environment with precision equipment" loading="lazy" />
-              <span className="image-caption">INDUSTRY IN CONTEXT / 01</span>
-            </Reveal>
-            <div className="industry-feature-content">
-              <IndustryGrid compact />
-              <div className="section-end-link"><Link to="/industries">View all industries <ArrowRight aria-hidden="true" /></Link></div>
-            </div>
-          </div>
+          <IndustryGrid />
+          <div className="section-end-link"><Link to="/industries">View all industries <ArrowRight aria-hidden="true" /></Link></div>
         </div>
       </section>
 

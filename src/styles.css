@@ -802,8 +802,7 @@
   height: 23px;
 }
 
-.card-number,
-.industry-card-index {
+.card-number {
   color: color-mix(in oklab, var(--muted-text) 62%, transparent);
   font-size: 10px;
   font-weight: 600;
@@ -1025,14 +1024,6 @@
 }
 
 /* Industries */
-.industry-feature {
-  display: grid;
-  grid-template-columns: minmax(250px, 0.77fr) minmax(0, 1.23fr);
-  align-items: stretch;
-  gap: 28px;
-}
-
-.industry-feature-image,
 .technology-home-visual,
 .feature-image {
   position: relative;
@@ -1042,29 +1033,12 @@
   background: var(--card-background);
 }
 
-.industry-feature-image {
-  min-height: 460px;
-}
-
-.industry-feature-image img,
 .technology-home-visual > img,
 .feature-image > img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.industry-feature-image img {
-  position: absolute;
-  inset: 0;
-}
-
-.industry-feature-image::after {
-  position: absolute;
-  inset: 40% 0 0;
-  background: linear-gradient(0deg, color-mix(in oklab, var(--deep-background) 88%, transparent), transparent);
-  content: "";
 }
 
 .image-caption {
@@ -1077,63 +1051,76 @@
   font-weight: 700;
 }
 
-.industry-feature-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .industry-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: 12px;
 }
 
 .industry-card {
   position: relative;
-  min-height: 172px;
-  padding: 20px;
+  isolation: isolate;
+  min-width: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
   border: 1px solid var(--brand-border);
-  border-radius: 5px;
-  background: color-mix(in oklab, var(--card-background) 85%, transparent);
-  transition: border-color 220ms ease, transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 4px;
+  background: var(--card-background);
+  transition: border-color 220ms ease;
+}
+
+.industry-card > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.industry-card::after {
+  position: absolute;
+  z-index: 0;
+  inset: 35% 0 0;
+  background: linear-gradient(0deg, color-mix(in oklab, var(--deep-background) 94%, transparent), color-mix(in oklab, var(--deep-background) 48%, transparent) 58%, transparent);
+  content: "";
 }
 
 .industry-card:hover {
-  transform: translateY(-3px);
   border-color: color-mix(in oklab, var(--technology-blue) 65%, var(--brand-border));
 }
 
-.industry-card-index {
-  position: absolute;
-  top: 20px;
-  right: 18px;
+.industry-card:hover > img {
+  transform: scale(1.035);
 }
 
-.industry-icon {
-  width: 23px;
-  height: 23px;
-  color: var(--technology-blue);
+.industry-card-content {
+  position: absolute;
+  z-index: 1;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) 18px;
+  align-items: center;
+  gap: 10px;
+}
+
+.industry-card-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--brand-orange);
 }
 
 .industry-card h3 {
-  margin-top: 20px;
-  font-size: 13px;
+  font-size: 16px;
+  line-height: 1.3;
 }
 
-.industry-card p {
-  margin-top: 8px;
-  color: var(--muted-text);
-  font-size: 11px;
-  line-height: 1.55;
-}
-
-.industry-grid.is-compact {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.industry-grid.is-compact .industry-card {
-  min-height: 130px;
+.industry-card-arrow {
+  width: 18px;
+  height: 18px;
+  color: var(--brand-white);
 }
 
 .industry-perspective-band {
@@ -1937,9 +1924,7 @@
   .introduction-layout,
   .technology-home-layout,
   .technology-page-layout { gap: 42px; }
-  .industry-feature { grid-template-columns: minmax(220px, 0.68fr) minmax(0, 1.32fr); gap: 20px; }
-  .industry-grid.is-compact { gap: 10px; }
-  .industry-grid.is-compact .industry-card { padding: 14px; }
+  .industry-grid { gap: 10px; }
   .footer-main { grid-template-columns: 1.2fr 0.8fr 0.9fr; }
   .footer-contact-column { grid-column: 2 / 4; }
   .contact-placeholders { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
@@ -1989,10 +1974,7 @@
   .why-philosophy-band { padding-block: 72px; }
   .why-philosophy-statement { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; }
   .why-philosophy-word { font-size: 30px; }
-  .industry-feature { grid-template-columns: 1fr; }
-  .industry-feature-image { min-height: 350px; }
   .industry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .industry-grid.is-compact .industry-card { min-height: 122px; }
   .technology-home-visual { min-height: 390px; }
   .technology-page-layout { gap: 52px; }
   .approach-grid { gap: 20px; }
@@ -2051,12 +2033,11 @@
   .why-philosophy-content > .eyebrow { margin-bottom: 24px; }
   .why-philosophy-statement { gap: 22px 12px; }
   .why-philosophy-word { font-size: 24px; }
-  .industry-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
-  .industry-grid.is-compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .industry-card { min-height: 150px; padding: 14px; }
+  .industry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .industry-card-content { right: 10px; bottom: 11px; left: 10px; grid-template-columns: 18px minmax(0, 1fr) 14px; gap: 7px; }
+  .industry-card-icon { width: 17px; height: 17px; }
+  .industry-card-arrow { width: 14px; height: 14px; }
   .industry-card h3 { font-size: 12px; }
-  .industry-card p { font-size: 10px; }
-  .industry-feature-image { min-height: 270px; }
   .technology-row { grid-template-columns: 24px 22px minmax(0, 1fr) 14px; gap: 8px; }
   .technology-row h3 { font-size: 12px; }
   .technology-row p { font-size: 10px; }

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 import { Button } from "@/components/ui/button";
@@ -121,19 +121,20 @@ export function SolutionGrid({ compact = false }: { compact?: boolean }) {
   );
 }
 
-export function IndustryGrid({ compact = false }: { compact?: boolean }) {
-  const items = compact ? industries.slice(0, 6) : industries;
+export function IndustryGrid() {
   return (
-    <div className={`industry-grid${compact ? " is-compact" : ""}`}>
-      {items.map((industry, index) => {
+    <div className="industry-grid">
+      {industries.map((industry) => {
         const Icon = industry.icon;
         return (
-          <Reveal key={industry.name} className="industry-reveal">
+          <Reveal key={industry.name}>
             <article className="industry-card">
-              <span className="industry-card-index">0{index + 1}</span>
-              <Icon className="industry-icon" aria-hidden="true" strokeWidth={1.6} />
-              <h3>{industry.name}</h3>
-              {!compact ? <p>{industry.description}</p> : null}
+              <img src={industry.image} alt={industry.imageAlt} loading="lazy" decoding="async" />
+              <div className="industry-card-content">
+                <Icon className="industry-card-icon" aria-hidden="true" strokeWidth={1.7} />
+                <h3>{industry.name}</h3>
+                <ArrowUpRight className="industry-card-arrow" aria-hidden="true" />
+              </div>
             </article>
           </Reveal>
         );

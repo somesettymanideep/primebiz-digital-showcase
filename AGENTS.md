@@ -32,4 +32,5 @@ use the editor.
 ## Site architecture
 - Keep the shared PRIMEBIZPRO navigation, footer, and floating controls in `SiteLayout` around the root outlet so every public page shares the same shell.
 - Keep page copy, concept lists, and metadata helpers in the browser-safe site content module so routes and reusable sections remain consistent.
+- Keep the same six-image industry showcase on the home and Industries pages, with card imagery and labels sourced from the browser-safe site content module so both views stay aligned.
 - Validate enquiries with the shared schema on both client and server; store them through the server-only client with no public read access to protect personal details.
